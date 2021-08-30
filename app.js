@@ -3,6 +3,13 @@ const express = require("express")
  
 const app = express()
 
+app. get ('/error', function(request, response){
+
+    response.status(404).send ('Something went wrong, try again later')
+    console.log(`Запрошенный адрес: ${request.url}`)
+
+})
+
 
 app.get("/", function(request, response){
 
@@ -22,6 +29,11 @@ app.get("/auth", function(request, response){
     console.log(`Запрошенный адрес: ${request.url}`)
 })
 app.post('/auth', function(request,response){
+  
+   //хочу сделать - если пусто, то редирект хз зачем
+    /*if(!request.body) {
+        response.redirect ('/error')
+    }*/
     // по нажатию кнопки потвердить происходит редирект на домашнюю страницу
     response.statusCode = 301
     response.redirect ('/home')
