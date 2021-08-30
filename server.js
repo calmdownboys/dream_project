@@ -8,7 +8,7 @@ const server = http.createServer((request, response) => {
   
 
   console.log(`Запрошенный адрес: ${request.url}`) // вывод в консоль запрашиваемого адреса
-  fs.readFile('main.html', 'utf8', function(error, data){
+  fs.readFile('home.html', 'utf8', function(error, data){
 
   if (request.url === '/')
   {
