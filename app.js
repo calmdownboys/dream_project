@@ -1,8 +1,16 @@
 const { request, response } = require("express")
 const express = require("express")
+const bodyParser = require ('body-parser')
+const db = require('./queries')
  
 const app = express()
 
+app.use(bodyParser.json())
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+)
 
 app. get ('/error', function(request, response){
 
@@ -10,7 +18,7 @@ app. get ('/error', function(request, response){
     console.log(`Запрошенный адрес: ${request.url}`)
 
 })
-
+app.get ('/getAuth', db.getAuth)//хотим отправить JSON с данными из таблицы БД 
 
 app.get("/", function(request, response){
 
